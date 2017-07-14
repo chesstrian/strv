@@ -1,1 +1,15 @@
-{}
+{
+  "name": "STRV",
+  "description": "STRV NodeJS Backend Test Project",
+  "repository": "https://github.com/chesstrian/strv.git",
+  "logo": "https://cdn2.iconfinder.com/data/icons/nodejs-1/512/nodejs-512.png",
+  "keywords": [
+    "strv",
+    "node",
+    "express",
+    "api",
+    "rest",
+    "firebase"
+  ],
+  "addons": ["mongolab"]
+}

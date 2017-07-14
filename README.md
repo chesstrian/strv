@@ -113,6 +113,10 @@ gulp test
 
 This project uses MongoDB, please check `config/default.json` file to fit database setup to your needs.
 
+## Deployment
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/chesstrian/strv)
+
 ## License
 
 MIT
