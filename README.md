@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.com/chesstrian/strv.svg?token=rzW7Ckt4qZzx3cW2JUxP&branch=master)](https://travis-ci.com/chesstrian/strv)
 > STRV NodeJS Backend Test Project
 
-Test project to apply to NodeJS Backend Developer position on STRV. Please refer to [Test project.md](./Test project.md) to check details.
+Test project to apply to NodeJS Backend Developer position on STRV. Please refer to [Test project.md](./Test%20project.md) to check details.
 
 ## Installation
 
