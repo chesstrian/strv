@@ -13,7 +13,9 @@
     "config": "^1.26.1",
     "debug": "^2.6.8",
     "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
     "mongoose": "^4.11.1",
+    "mongoose-type-email": "^1.0.5",
     "morgan": "^1.8.2",
     "swagger-jsdoc": "^1.9.6"
   },
@@ -21,6 +23,7 @@
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.0",
     "chai-http": "^3.0.0",
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-jscs": "^4.0.0",

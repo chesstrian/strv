@@ -1,6 +1,7 @@
 'use strict';
 
 import babel from 'gulp-babel';
+import del from 'del';
 import gulp from 'gulp';
 import jscs from 'gulp-jscs';
 import jshint from 'gulp-jshint';
@@ -8,16 +9,20 @@ import mocha from 'gulp-mocha';
 import nodemon from 'gulp-nodemon';
 import stylish from 'jshint-stylish';
 
-gulp.task('es6', () => {
-  gulp
+gulp.task('build', () => {
+  return gulp
     .src('src/**/*.js')
     .pipe(babel())
     .pipe(gulp.dest('dst'))
-  ;
+    ;
+});
+
+gulp.task('clean', () => {
+  return del(['dst'])
 });
 
 gulp.task('jscs', () => {
-  gulp
+  return gulp
     .src('src/**/*.js')
     .pipe(jscs())
     .pipe(jscs.reporter())
@@ -26,27 +31,29 @@ gulp.task('jscs', () => {
 });
 
 gulp.task('jshint', () => {
-  gulp
+  return gulp
     .src('src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter(stylish))
 });
 
 gulp.task('server', () => {
-  nodemon({
+  return nodemon({
     'script': 'dst'
   });
 });
 
-gulp.task('test', ['es6'], () => {
-  gulp
+gulp.task('test', ['build'], () => {
+  process.env.NODE_ENV = 'test';
+
+  return gulp
     .src('dst/tests/**/*.js')
     .pipe(mocha({ reporter: 'nyan' }))
   ;
 });
 
 gulp.task('watch', () => {
-  gulp.watch('./src/**/*.js', ['jscs', 'jshint', 'es6']);
+  return gulp.watch('./src/**/*.js', ['jscs', 'jshint', 'build']);
 });
 
-gulp.task('default', ['jscs', 'jshint', 'es6', 'watch', 'server']);
+gulp.task('default', ['jscs', 'jshint', 'build', 'watch', 'server']);
