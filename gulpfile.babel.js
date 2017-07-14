@@ -37,7 +37,7 @@ gulp.task('jshint', () => {
     .pipe(jshint.reporter(stylish))
 });
 
-gulp.task('server', () => {
+gulp.task('server', ['jscs', 'jshint', 'build', 'watch'], () => {
   return nodemon({
     'script': 'dst'
   });
@@ -56,4 +56,4 @@ gulp.task('watch', () => {
   return gulp.watch('./src/**/*.js', ['jscs', 'jshint', 'build']);
 });
 
-gulp.task('default', ['jscs', 'jshint', 'build', 'watch', 'server']);
+gulp.task('default', ['server']);
