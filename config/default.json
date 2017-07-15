@@ -13,6 +13,6 @@
       "info": "STRV NodeJS Backend API Rest",
       "version": "1.0.0"
     },
-    "apis": ["./src/routes/api.js"]
+    "apis": ["./src/applications/api.js"]
   }
 }

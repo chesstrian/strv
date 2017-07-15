@@ -4,13 +4,13 @@ import bodyParser from 'body-parser';
 import Express from 'express';
 import morgan from 'morgan';
 
+import { API, Docs } from './applications';
 import { Logger, MongoDB } from './resources';
-import { API, Docs } from './routes';
 
 const app = new Express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(morgan('tiny'));
 
 app.use('/', Docs);

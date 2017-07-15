@@ -1,6 +1,7 @@
 {
   "name": "strv",
   "version": "1.0.0",
+  "private": true,
   "description": "STRV NodeJS Backend Test Project",
   "main": "index.js",
   "scripts": {
@@ -17,7 +18,8 @@
     "mongoose": "^4.11.1",
     "mongoose-type-email": "^1.0.5",
     "morgan": "^1.8.2",
-    "swagger-jsdoc": "^1.9.6"
+    "swagger-jsdoc": "^1.9.6",
+    "swagger-ui-express": "^2.0.1"
   },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",

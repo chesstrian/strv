@@ -1,7 +1,7 @@
 'use strict';
 
-import api from './api';
-import docs from './docs';
+import { addContact } from './api/contacts';
+import { login, register } from './api/users';
 
-export const API = api;
-export const Docs = docs;
+export const Users = { login, register };
+export const Contacts = { save: addContact };

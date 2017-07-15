@@ -107,7 +107,7 @@ gulp test
 
 ## API Reference
 
-> TODO
+Run the project and go to [/explore](http://localhost:3000/explore) to check API Reference.
 
 ## Database
 
