@@ -167,13 +167,16 @@ router.all('/users/register', Users.register);
  *         schema:
  *           type: object
  *           properties:
- *             created:
+ *             success:
  *               type: boolean
+ *             message:
+ *               type: string
  *             contact:
  *               type: object
  *         examples:
  *           application/json: {
- *             "created": true,
+ *             "success": true,
+ *             "message": "Contract created",
  *             "contact": {
  *               "type": "email",
  *               "value": "username@email.co",
@@ -185,29 +188,41 @@ router.all('/users/register', Users.register);
  *         schema:
  *           type: object
  *           properties:
- *             errors:
- *               type: object
+ *             success:
+ *               type: boolean
+ *             message:
+ *               type: string
  *         examples:
  *           application/json: {
- *             errors: {
- *               type: {
- *                 message: 'Path `type` is required.',
- *               }
- *             }
+ *             "success": false,
+ *             "message": "Missing required params"
  *           }
  *       401:
- *        schema:
- *          type: object
- *          properties:
- *            errors:
- *              type: object
- *        examples:
- *          application/json: {
- *            errors: {
- *              name: "Error",
- *              code: "AUTHORIZATION_REQUIRED"
- *            }
- *          }
+ *         schema:
+ *           type: object
+ *           properties:
+ *             success:
+ *               type: boolean
+ *             message:
+ *               type: string
+ *         examples:
+ *           application/json: {
+ *             "success": false,
+ *             "message": "Failed to authenticate token."
+ *           }
+ *       403:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             success:
+ *               type: boolean
+ *             message:
+ *               type: string
+ *         examples:
+ *           application/json: {
+ *             "success": false,
+ *             "message": "No token provided."
+ *           }
  */
 router.post('/contacts', Contacts.save);
 
