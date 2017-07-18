@@ -7,6 +7,14 @@
       "db_name": "strv_dev"
     }
   },
+  "firebase": {
+    "apiKey": "AIzaSyBL5hQnfVvgFNDEbEEiKNWRBVGRsl-nVqI",
+    "databaseURL": "https://strv-7e9ca.firebaseio.com/"
+  },
+  "jwt": {
+    "expiration": "1h",
+    "secret": "gr34t s3cr3t"
+  },
   "salt_work_factor": 10,
   "swagger_options": {
     "swaggerDefinition": {

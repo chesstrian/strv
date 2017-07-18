@@ -3,5 +3,8 @@
     "mongodb": {
       "db_name": "strv_test"
     }
+  },
+  "jwt": {
+    "expiration": "5s"
   }
 }

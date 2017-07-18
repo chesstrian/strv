@@ -2,6 +2,7 @@
 
 import { Router } from 'express';
 
+import { verifyToken } from '../middlewares';
 import { Users, Contacts } from '../routes';
 
 const router = new Router({ caseSensitive: true });
@@ -159,8 +160,8 @@ router.all('/users/register', Users.register);
  *           example: {
  *             "type": "email",
  *             "value": "username@email.co",
- *             "first_name": "My",
- *             "last_name": "Contact"
+ *             "firstName": "My",
+ *             "lastName": "Contact"
  *           }
  *     responses:
  *       201:
@@ -176,12 +177,12 @@ router.all('/users/register', Users.register);
  *         examples:
  *           application/json: {
  *             "success": true,
- *             "message": "Contract created",
+ *             "message": "Contact created.",
  *             "contact": {
  *               "type": "email",
  *               "value": "username@email.co",
- *               "first_name": "My",
- *               "last_name": "Contact"
+ *               "firstName": "My",
+ *               "lastName": "Contact"
  *             }
  *           }
  *       400:
@@ -195,7 +196,7 @@ router.all('/users/register', Users.register);
  *         examples:
  *           application/json: {
  *             "success": false,
- *             "message": "Missing required params"
+ *             "message": "Missing required params."
  *           }
  *       401:
  *         schema:
@@ -224,6 +225,6 @@ router.all('/users/register', Users.register);
  *             "message": "No token provided."
  *           }
  */
-router.post('/contacts', Contacts.save);
+router.post('/contacts', verifyToken, Contacts.save);
 
 export default router;

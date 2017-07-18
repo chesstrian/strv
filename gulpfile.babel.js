@@ -48,7 +48,7 @@ gulp.task('test', ['build'], () => {
 
   return gulp
     .src('dst/tests/**/*.js')
-    .pipe(mocha({ reporter: 'nyan' }))
+    .pipe(mocha({ timeout: 10000 }))
   ;
 });
 
