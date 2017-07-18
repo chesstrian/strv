@@ -4,7 +4,7 @@
       "protocol": "mongodb",
       "host": "localhost",
       "port": 27017,
-      "db_name": "strv"
+      "db_name": "strv_dev"
     }
   },
   "salt_work_factor": 10,

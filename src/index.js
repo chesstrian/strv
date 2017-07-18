@@ -11,7 +11,9 @@ const app = new Express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(morgan('tiny'));
+if (!~['test', 'prod'].indexOf(process.env.NODE_ENV)) {
+  app.use(morgan('tiny'));
+}
 
 app.use('/', Docs);
 app.use('/api/v1', API);
