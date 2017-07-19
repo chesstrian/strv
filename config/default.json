@@ -11,6 +11,7 @@
     "apiKey": "AIzaSyBL5hQnfVvgFNDEbEEiKNWRBVGRsl-nVqI",
     "databaseURL": "https://strv-7e9ca.firebaseio.com/"
   },
+  "firebase_ref": "contacts",
   "jwt": {
     "expiration": "1h",
     "secret": "gr34t s3cr3t"

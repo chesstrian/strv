@@ -2,7 +2,10 @@
 
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import config from 'config';
+import firebase from 'firebase';
 
+import { FirebaseApp } from '../../../resources';
 import server from '../../..';
 import { User } from '../../../models';
 
@@ -28,7 +31,11 @@ describe('Tests for Contact Saving API Service', () => {
           .end((err, res) => {
             token = res.body.token;
 
-            done();
+            firebase
+              .auth()
+              .signInAnonymously()
+              .then(() => FirebaseApp.ref(config.get('firebase_ref')).remove(done))
+            ;
           })
         ;
       });
@@ -82,6 +89,23 @@ describe('Tests for Contact Saving API Service', () => {
   });
 
   it('it should create a contact', (done) => {
+    firebase
+      .auth()
+      .signInAnonymously()
+      .then(() => FirebaseApp.ref().child(config.get('firebase_ref')).once('value'))
+      .then((snapshot) => {
+        const contacts = snapshot.val();
+        const keys = Object.keys(contacts);
+        keys.length.should.be.eql(1);
+
+        const contact = contacts[keys[0]];
+        contact.type.should.be.eql('phone');
+        contact.value.should.be.eql('(+57) 321 234 5678');
+
+        done();
+      })
+    ;
+
     chai
       .request(server)
       .post(url)
@@ -92,8 +116,6 @@ describe('Tests for Contact Saving API Service', () => {
         res.body.message.should.be.eql('Contact created.');
         res.body.contact.type.should.be.eql('phone');
         res.body.contact.value.should.be.eql('(+57) 321 234 5678');
-
-        done();
       })
     ;
   });

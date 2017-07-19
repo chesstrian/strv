@@ -3,6 +3,8 @@
 import config from 'config';
 import firebase from 'firebase';
 
+import { FirebaseApp } from '../../resources';
+
 export const addContact = (req, res) => {
   const { type, value, email, firstName, lastName } = req.body;
 
@@ -20,14 +22,11 @@ export const addContact = (req, res) => {
   contact.firstName = firstName || '';
   contact.lastName = lastName || '';
 
-  firebase.initializeApp(config.get('firebase'));
-
   firebase
     .auth()
     .signInAnonymously()
     .then(() => {
-      const contactsRef = firebase.app().database().ref().child('contacts');
-
+      const contactsRef = FirebaseApp.ref().child(config.get('firebase_ref'));
       return contactsRef.push(contact);
     })
     .then(() => {

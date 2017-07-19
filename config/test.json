@@ -4,6 +4,7 @@
       "db_name": "strv_test"
     }
   },
+  "firebase_ref": "tests",
   "jwt": {
     "expiration": "5s"
   }
