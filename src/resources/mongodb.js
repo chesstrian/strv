@@ -8,7 +8,13 @@ import { Logger } from './';
 const DB_CONFIG = config.get('db.mongodb');
 
 export default () => {
-  const uri = `${DB_CONFIG.protocol}://${DB_CONFIG.host}:${DB_CONFIG.port}/${DB_CONFIG.db_name}`;
+  let uri;
+  if (process.env.MONGODB_URI) {
+    uri = process.env.MONGODB_URI;
+  } else {
+    uri = `${DB_CONFIG.protocol}://${DB_CONFIG.host}:${DB_CONFIG.port}/${DB_CONFIG.db_name}`;
+  }
+
   mongoose.connect(uri, { useMongoClient: true, });
   mongoose.Promise = global.Promise;
 };

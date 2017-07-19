@@ -1,7 +1,0 @@
-{
-  "db": {
-    "mongodb": {
-      "db_name": "strv"
-    }
-  }
-}
