@@ -20,6 +20,6 @@ app.use('/api/v1', API);
 
 MongoDB();
 
-export default app.listen(3000, () => {
+export default app.listen(process.env.PORT || 3000, () => {
   Logger('Server running');
 });
